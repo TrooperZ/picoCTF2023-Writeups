@@ -35,7 +35,24 @@ A list of writeups from the 2023 PicoCTF hacking competition from team cvhs_exe.
 - [PowerAnalysis: Warmup](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#poweranalysis:-warmup)
 - [PowerAnalysis: Part 1](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#poweranalysis:-part-1)
 - [SRA](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#sra)
-- [Poweranalysis:-part-1](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#poweranalysis:-part-1)
+- [Poweranalysis: Part 2](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#poweranalysis:-part-2)
+
+	
+</details>
+
+<details open><summary>
+	
+### [Forensics](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#forensics):
+	
+</summary>
+	
+- [who is it](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#who-is-it)
+- [hideme](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#hideme)
+- [PcapPoisoning](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#pcappoisoning)
+- [FindAndOpen](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#findandopen)
+- [MSB](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#msb)
+- [Invisible WORDs](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#invisible-words)
+- [UnforgottenBits](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#unforgottenbits)
 
 	
 </details>
@@ -182,5 +199,52 @@ openssl req -in readmycert.csr -noout -text
 This website also does the trick: https://www.sslshopper.com/csr-decoder.html
 
 The common name is the flag: picoCTF{read_mycert_41d1c74c}
+
+___
+
+
+# Forensics
+
+## who is it
+###  100 Points | Solved By TrooperZ
+#### [View Question in Pico Gym](https://play.picoctf.org/practice/challenge/388?category=4&originalEvent=72&page=1)
+
+AUTHOR: SUNDAY JACOB NWANYIM
+
+### Description:
+
+Someone just sent you an email claiming to be Google's co-founder Larry Page but you suspect a scam.
+Can you help us identify whose mail server the email actually originated from?
+Download the email file [here](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/Forensics/who-is-it/email-export.eml). Flag: picoCTF{FirstnameLastname}
+
+Tags: picoCTF 2023, Forensics, email
+
+Hints: 
+- whois can be helpful on IP addresses also, not only domain names.
+
+### Solution: 
+
+Opening the `.eml` file in notepad gives us a lot of stuff to look at. However, there is one interesting piece of info, an IP address.
+```
+Received: from mail.onionmail.org (mail.onionmail.org. [173.249.33.206])
+```
+
+
+Running `whois 173.249.33.206` on the IP gives us this:
+```
+...
+mnt-by:         MNT-CONTABO
+created:        2009-12-09T13:41:08Z
+last-modified:  2021-09-14T10:49:04Z
+source:         RIPE # Filtered
+
+person:         Wilhelm Zwalina
+address:        Contabo GmbH
+address:        Aschauer Str. 32a
+address:        81549 Muenchen
+...
+```
+
+Looks like Wilhelm Zwalina owns the mail server. picoCTF{WilhelmZwalina}
 
 ___
