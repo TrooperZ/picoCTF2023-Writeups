@@ -136,7 +136,7 @@ As said in the name and tags, there's a [TOCTOU](https://en.wikipedia.org/wiki/T
 
 Through this, we create our own file which we have permissions to read to with `echo OurFile > notflag.txt`. 
 
-Then, we write a bash one-liner to create a link file and swap the linkage to the file between the flag and our dummy file. This way, we can change the ownership of the file right after it's opened and read into the memory of the program.
+Then, we write a bash one-liner to create a link file and constantly swap the linkage to the file between the flag and our dummy file. This way, we can change the ownership of the file right after it's opened and read into the memory of the program.
 ```
 while true; do ln -sf flag.txt linky; ln -sf file.txt linky; done &
 ```
