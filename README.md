@@ -57,6 +57,24 @@ A list of writeups from the 2023 PicoCTF hacking competition from team cvhs_exe.
 	
 </details>
 
+<details open><summary>
+	
+### [General Skills](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#general-skills):
+	
+</summary>
+	
+- [Rules 2023](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#rules-2023)
+- [money-ware](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#money-ware)
+- [repetitions](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#repetitions)
+- [chrono](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#chrono)
+- [Permissions](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#permissions)
+- [useless](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#useless)
+- [Special](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#special)
+- [Specialer](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#specialer)
+
+	
+</details>
+
 
 # Binary Exploit
 
@@ -209,7 +227,7 @@ ___
 ###  100 Points | Solved By TrooperZ
 #### [View Question in Pico Gym](https://play.picoctf.org/practice/challenge/388?category=4&originalEvent=72&page=1)
 
-AUTHOR: SUNDAY JACOB NWANYIM
+AUTHOR: JUNIAS BONOU
 
 ### Description:
 
@@ -248,3 +266,56 @@ address:        81549 Muenchen
 Looks like Wilhelm Zwalina owns the mail server. picoCTF{WilhelmZwalina}
 
 ___
+
+
+# General Skills
+
+## Rules 2023
+###  100 Points | Solved By TrooperZ
+#### Question Not in Pico Gym
+
+AUTHOR: I forgot
+
+### Description:
+
+(I forgot this too)
+
+Hints: 
+- None
+
+### Solution: 
+
+Easiest question ever on picoCTF. Read the rules, find the flag. (You can't do Ctrl + F by the way, it's an image)
+
+You'll find the flag under "What are the other rules and terms for picoCTF 2023?"
+
+picoCTF{h34rd_und3r5700d_4ck_cba1c711}
+
+___
+
+
+## money-ware
+###  100 Points | Solved By TrooperZ
+#### [View Question in Pico Gym](https://play.picoctf.org/practice/challenge/357?category=5&originalEvent=72&page=1)
+
+AUTHOR: JUNI19
+
+### Description:
+
+Flag format: picoCTF{Malwarename}
+The first letter of the malware name should be capitalized and the rest lowercase.
+Your friend just got hacked and has been asked to pay some bitcoins to `1Mz7153HMuxXTuR2R1t78mGSdzaAtNbBWX`. He doesn’t seem to understand what is going on and asks you for advice. Can you identify what malware he’s being a victim of?
+
+Tags: picoCTF 2023, Forensics, email
+
+Hints: 
+- Some crypto-currencies abuse databases exist; check them out!
+- Maybe Google might help.
+
+### Solution: 
+
+Another simple one. Just look up the address on google. Found this [link](https://www.cnbc.com/2017/06/28/ransomware-cyberattack-petya-bitcoin-payment.html) from CNBC.
+
+picoCTF{Petya}
+
+____
