@@ -27,7 +27,8 @@ A list of writeups from the 2023 PicoCTF hacking competition from team cvhs_exe.
 (Add the stuff yall did as well)
 
 
-## tic-tac | 200 Points | Solved By TrooperZ
+## tic-tac
+###  200 Points | Solved By TrooperZ
 #### [View Question in Pico Gym](https://play.picoctf.org/practice/challenge/380?category=6&originalEvent=72&page=1)
 
 AUTHOR: JUNIAS BONOU
