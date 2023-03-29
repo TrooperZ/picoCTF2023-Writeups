@@ -22,6 +22,25 @@ A list of writeups from the 2023 PicoCTF hacking competition from team cvhs_exe.
 </details>
 
 
+<details open><summary>
+	
+### [Cryptography](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#cryptography):
+	
+</summary>
+	
+- [ReadMyCert](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#readmycert)
+- [rotation](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#rotation)
+- [HideToSee](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#tic-tac)
+- [VNE](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#HideToSee)
+- [PowerAnalysis: Warmup](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#poweranalysis:-warmup)
+- [PowerAnalysis: Part 1](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#poweranalysis:-part-1)
+- [SRA](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#sra)
+- [Poweranalysis:-part-1](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#poweranalysis:-part-1)
+
+	
+</details>
+
+
 # Binary Exploit
 
 (Add the stuff yall did as well)
@@ -134,7 +153,34 @@ Error: you don't own this file
 ```
 More info here: https://samsclass.info/127/proj/E10.htm
 
+___
 
+# Cryptography
 
+## ReadMyCert
+###  100 Points | Solved By TrooperZ
+#### [View Question in Pico Gym](https://play.picoctf.org/practice/challenge/367?originalEvent=72&page=1)
 
+AUTHOR: SUNDAY JACOB NWANYIM
 
+### Description:
+
+How about we take you on an adventure on exploring certificate signing requests
+Take a look at this CSR file [here](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/Cryptography/ReadMyCert/readmycert.csr)
+
+Tags: picoCTF 2023, Cryptography
+
+Hints: 
+- Download the certificate signing request and try to read it.
+
+### Solution: 
+
+Simply check the CSR with OpenSSL or any other tool:
+```
+openssl req -in readmycert.csr -noout -text
+```
+This website also does the trick: https://www.sslshopper.com/csr-decoder.html
+
+The common name is the flag: picoCTF{read_mycert_41d1c74c}
+
+___
