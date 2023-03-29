@@ -24,7 +24,7 @@ A list of writeups from the 2023 PicoCTF hacking competition from team cvhs_exe.
 
 <details open><summary>
 	
-### [Cryptography](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#cryptography):
+### [Cryptography](https://github.com/TrooperZ/picoCTF2023-Writeups/blob/main/README.md#cryptography-1):
 	
 </summary>
 	
